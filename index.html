@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>المشاريع الإحصائية</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+    }
+    .header {
+      text-align: center;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #333;
+    }
+    #selectLesson {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .container {
+      width: 90%;
+      max-width: 900px;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: none;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ddd;
+    }
+    th, td {
+      text-align: center;
+      padding: 8px;
+    }
+    input[type="number"] {
+      width: 90%;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      padding: 8px 12px;
+      margin: 5px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .delete-row {
+      background-color: #e74c3c;
+    }
+    .delete-row:hover {
+      background-color: #c0392b;
+    }
+    tfoot td {
+      font-weight: bold;
+      background-color: #f0f0f0;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">تصميم و برمجه المواقع محمد وضاح نصر</div>
+  
+  <div id="selectLesson">
+    <label for="lessonSelect">اختار الدرس: </label>
+    <select id="lessonSelect">
+      <option value="correlation">تحليل الارتباط</option>
+      <option value="regression">تحليل الانحدار</option>
+      <option value="timeseries">السلاسل الزمنية</option>
+    </select>
+  </div>
+  
+  <!-- مشروع تحليل الارتباط -->
+  <div id="correlation" class="container">
+    <h2>تحليل الارتباط</h2>
+    <table id="inputTable1">
+      <thead>
+        <tr>
+          <th>س</th>
+          <th>ص</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="number" class="x-value"></td>
+          <td><input type="number" class="y-value"></td>
+          <td><button class="delete-row">حذف</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="addRow1">إضافة صف</button>
+    <button id="calculate1">حساب تحليل الارتباط</button>
+    <table id="dataTable1">
+      <thead>
+        <tr>
+          <th>س</th>
+          <th>ص</th>
+          <th>س×ص</th>
+          <th>س²</th>
+          <th>ص²</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ستضاف الصفوف تلقائياً -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td id="sumX1">0</td>
+          <td id="sumY1">0</td>
+          <td id="sumXY1">0</td>
+          <td id="sumX21">0</td>
+          <td id="sumY21">0</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div id="explanation1">
+      <!-- ستعرض النتيجة النهائية هنا -->
+    </div>
+  </div>
+  
+  <!-- مشروع تحليل الانحدار -->
+  <div id="regression" class="container">
+    <h2>تحليل الانحدار</h2>
+    <table id="inputTable2">
+      <thead>
+        <tr>
+          <th>س</th>
+          <th>ص</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="number" class="x-value" placeholder=""></td>
+          <td><input type="number" class="y-value" placeholder=""></td>
+          <td><button class="delete-row">حذف</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="addRow2">إضافة صف</button>
+    <button id="calculate2">حساب تحليل الانحدار</button>
+    <table id="dataTable2">
+      <thead>
+        <tr>
+          <th>س</th>
+          <th>ص</th>
+          <th>س×ص</th>
+          <th>س²</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ستضاف الصفوف تلقائياً -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td id="sumX2">0</td>
+          <td id="sumY2">0</td>
+          <td id="sumXY2">0</td>
+          <td id="sumX22">0</td>
+        </tr>
+      </tfoot>
+    </table>
+    <div id="explanation2">
+      <!-- ستعرض معادلة الانحدار النهائية هنا -->
+    </div>
+  </div>
+  
+  <!-- مشروع السلاسل الزمنية -->
+  <div id="timeseries" class="container">
+    <h2>السلاسل الزمنية</h2>
+    <table id="inputTable3">
+      <thead>
+        <tr>
+          <th>س</th>
+          <th>ص</th>
+          <th>إجراءات</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="number" class="x-value"></td>
+          <td><input type="number" class="y-value"></td>
+          <td><button class="delete-row">حذف</button></td>
+        </tr>
+      </tbody>
+    </table>
+    <button id="addRow3">إضافة صف</button>
+    <button id="calculate3">حساب الانحدار</button>
+    <table id="dataTable3">
+      <thead>
+        <tr>
+          <th>س</th>
+          <th>ص</th>
+          <th>س × ص</th>
+          <th>س²</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- ستضاف الصفوف تلقائياً -->
+      </tbody>
+      <tfoot>
+        <tr>
+          <td id="sumX3"></td>
+          <td id="sumY3"></td>
+          <td id="sumXY3"></td>
+          <td id="sumX23"></td>
+        </tr>
+      </tfoot>
+    </table>
+    <div id="result3">
+      <!-- ستعرض معادلة الانحدار النهائية هنا -->
+    </div>
+  </div>
+  
+  <script>
+    // منطق اختيار الدرس
+    const lessonSelect = document.getElementById('lessonSelect');
+    const containers = document.querySelectorAll('.container');
+    function showSelectedProject() {
+      containers.forEach(container => container.style.display = 'none');
+      const selected = lessonSelect.value;
+      document.getElementById(selected).style.display = 'block';
+    }
+    lessonSelect.addEventListener('change', showSelectedProject);
+    showSelectedProject();
+    
+    // --- مشروع تحليل الارتباط ---
+    document.getElementById("addRow1").addEventListener("click", function() {
+      let tbody = document.querySelector("#inputTable1 tbody");
+      let newRow = document.createElement("tr");
+      newRow.innerHTML = `
+        <td><input type="number" class="x-value"></td>
+        <td><input type="number" class="y-value"></td>
+        <td><button class="delete-row">حذف</button></td>
+      `;
+      tbody.appendChild(newRow);
+      newRow.querySelector(".delete-row").addEventListener("click", function() {
+        newRow.remove();
+      });
+    });
+    document.querySelectorAll("#inputTable1 .delete-row").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        btn.closest("tr").remove();
+      });
+    });
+    document.getElementById("calculate1").addEventListener("click", function() {
+      let rows = document.querySelectorAll("#inputTable1 tbody tr");
+      let xValues = [];
+      let yValues = [];
+      rows.forEach(function(row) {
+        let x = parseFloat(row.querySelector(".x-value").value);
+        let y = parseFloat(row.querySelector(".y-value").value);
+        if (!isNaN(x) && !isNaN(y)) {
+          xValues.push(x);
+          yValues.push(y);
+        }
+      });
+      if (xValues.length === 0) {
+        alert("يرجى إدخال قيم في جدول الإدخال.");
+        return;
+      }
+      let dataTbody = document.querySelector("#dataTable1 tbody");
+      dataTbody.innerHTML = "";
+      let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0, sumY2 = 0;
+      let n = xValues.length;
+      for (let i = 0; i < n; i++) {
+        let x = xValues[i];
+        let y = yValues[i];
+        let xy = x * y;
+        let x2 = x * x;
+        let y2 = y * y;
+        sumX += x;
+        sumY += y;
+        sumXY += xy;
+        sumX2 += x2;
+        sumY2 += y2;
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${x}</td>
+          <td>${y}</td>
+          <td>${xy}</td>
+          <td>${x2}</td>
+          <td>${y2}</td>
+        `;
+        dataTbody.appendChild(tr);
+      }
+      document.getElementById("sumX1").textContent = sumX;
+      document.getElementById("sumY1").textContent = sumY;
+      document.getElementById("sumXY1").textContent = sumXY;
+      document.getElementById("sumX21").textContent = sumX2;
+      document.getElementById("sumY21").textContent = sumY2;
+      let numerator = n * sumXY - (sumX * sumY);
+      let denominatorPart1 = n * sumX2 - (sumX * sumX);
+      let denominatorPart2 = n * sumY2 - (sumY * sumY);
+      let denominator = Math.sqrt(denominatorPart1 * denominatorPart2);
+      let correlation = (denominator !== 0) ? numerator / denominator : 0;
+      document.getElementById("explanation1").innerHTML = `
+        <h3>نتيجة تحليل الارتباط</h3>
+        <p>معامل الارتباط (r) = <strong>${correlation.toFixed(2)}</strong></p>
+      `;
+    });
+    
+    // --- مشروع تحليل الانحدار ---
+    document.getElementById("addRow2").addEventListener("click", function() {
+      let tbody = document.querySelector("#inputTable2 tbody");
+      let newRow = document.createElement("tr");
+      newRow.innerHTML = `
+        <td><input type="number" class="x-value" placeholder=""></td>
+        <td><input type="number" class="y-value" placeholder=""></td>
+        <td><button class="delete-row">حذف</button></td>
+      `;
+      tbody.appendChild(newRow);
+      newRow.querySelector(".delete-row").addEventListener("click", function() {
+        newRow.remove();
+      });
+    });
+    document.querySelectorAll("#inputTable2 .delete-row").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        btn.closest("tr").remove();
+      });
+    });
+    document.getElementById("calculate2").addEventListener("click", function() {
+      let rows = document.querySelectorAll("#inputTable2 tbody tr");
+      let xValues = [];
+      let yValues = [];
+      rows.forEach(function(row) {
+        let x = parseFloat(row.querySelector(".x-value").value);
+        let y = parseFloat(row.querySelector(".y-value").value);
+        if (!isNaN(x) && !isNaN(y)) {
+          xValues.push(x);
+          yValues.push(y);
+        }
+      });
+      if (xValues.length === 0) {
+        alert("يرجى إدخال قيم في جدول الإدخال.");
+        return;
+      }
+      let dataTbody = document.querySelector("#dataTable2 tbody");
+      dataTbody.innerHTML = "";
+      let sumX = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+      let n = xValues.length;
+      for (let i = 0; i < n; i++) {
+        let x = xValues[i];
+        let y = yValues[i];
+        let xy = x * y;
+        let x2 = x * x;
+        sumX += x;
+        sumY += y;
+        sumXY += xy;
+        sumX2 += x2;
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${x}</td>
+          <td>${y}</td>
+          <td>${xy}</td>
+          <td>${x2}</td>
+        `;
+        dataTbody.appendChild(tr);
+      }
+      document.getElementById("sumX2").textContent = sumX;
+      document.getElementById("sumY2").textContent = sumY;
+      document.getElementById("sumXY2").textContent = sumXY;
+      document.getElementById("sumX22").textContent = sumX2;
+      let numerator = n * sumXY - (sumX * sumY);
+      let denominator = n * sumX2 - (sumX * sumX);
+      let b = (denominator !== 0) ? numerator / denominator : 0;
+      let a = (sumY - b * sumX) / n;
+      document.getElementById("explanation2").innerHTML = `
+        <h3>نتيجة تحليل الانحدار</h3>
+        <p>معادلة الانحدار: <strong>ص = ${a.toFixed(2)} + ${b.toFixed(2)}س</strong></p>
+      `;
+    });
+    
+    // --- مشروع السلاسل الزمنية ---
+    document.getElementById("addRow3").addEventListener("click", function () {
+      let tbody = document.querySelector("#inputTable3 tbody");
+      let newRow = document.createElement("tr");
+      newRow.innerHTML = `
+        <td><input type="number" class="x-value"></td>
+        <td><input type="number" class="y-value"></td>
+        <td><button class="delete-row">حذف</button></td>
+      `;
+      tbody.appendChild(newRow);
+      newRow.querySelector(".delete-row").addEventListener("click", function () {
+        newRow.remove();
+      });
+    });
+    document.querySelectorAll("#inputTable3 .delete-row").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        btn.closest("tr").remove();
+      });
+    });
+    document.getElementById("calculate3").addEventListener("click", function () {
+      let rows = document.querySelectorAll("#inputTable3 tbody tr");
+      let xValues = [];
+      let yValues = [];
+      rows.forEach(function (row) {
+        let x = parseFloat(row.querySelector(".x-value").value);
+        let y = parseFloat(row.querySelector(".y-value").value);
+        if (!isNaN(x) && !isNaN(y)) {
+          xValues.push(x);
+          yValues.push(y);
+        }
+      });
+      if (xValues.length < 2) {
+        alert("يرجى إدخال قيم كافية (على الأقل صفان) لحساب الانحدار.");
+        return;
+      }
+      let minX = Math.min(...xValues);
+      let xTransValues = xValues.map(x => x - minX);
+      let sumXTrans = 0, sumY = 0, sumXY = 0, sumX2 = 0;
+      let n = xTransValues.length;
+      let dataTbody = document.querySelector("#dataTable3 tbody");
+      dataTbody.innerHTML = "";
+      for (let i = 0; i < n; i++) {
+        let xT = xTransValues[i];
+        let y = yValues[i];
+        let xy = xT * y;
+        let x2 = xT * xT;
+        sumXTrans += xT;
+        sumY += y;
+        sumXY += xy;
+        sumX2 += x2;
+        let tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${xT}</td>
+          <td>${y}</td>
+          <td>${xy}</td>
+          <td>${x2}</td>
+        `;
+        dataTbody.appendChild(tr);
+      }
+      document.getElementById("sumX3").textContent = sumXTrans;
+      document.getElementById("sumY3").textContent = sumY;
+      document.getElementById("sumXY3").textContent = sumXY;
+      document.getElementById("sumX23").textContent = sumX2;
+      let numerator = n * sumXY - sumXTrans * sumY;
+      let denominator = n * sumX2 - (sumXTrans * sumXTrans);
+      let slope = numerator / denominator;
+      let meanX = sumXTrans / n; 
+      let meanY = sumY / n;
+      let intercept = meanY - slope * meanX;
+      document.getElementById("result3").innerHTML = `
+        <h3>نتيجة تحليل الانحدار</h3>
+        <p>معادلة الانحدار: <strong>ص = ${intercept.toFixed(2)} + ${slope.toFixed(2)} × س</strong></p>
+        <hr>
+        <p><strong>ملاحظة:</strong> س = (القيمة الأصلية - ${minX}).</p>
+      `;
+    });
+  </script>
+</body>
+</html>
